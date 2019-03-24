@@ -108,6 +108,7 @@ func main() {
 	// ibeacon.AddBatteryService()
 	err := ibeacon.Advertise(uint64(*duration))
 
+	//TODO: Handle signals, ensure we have a way to quit!
 	checkError(err)
 }
 
