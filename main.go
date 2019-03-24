@@ -95,7 +95,7 @@ func main() {
 	// 01020304050607080910111213141516
 	uuid := flag.String("uuid", "EC9E84F8-87D8-498B-8B0C-9EF8D3AA94C7", "UUID used to advertise the beacon")
 	major := flag.Int("major", 1, "iBeacon major version")
-	minor := flag.Int("major", 1, "iBeacon minor version")
+	minor := flag.Int("minor", 1, "iBeacon minor version")
 	name := flag.String("name", "rpibeacon", "iBeacon name")
 	power := flag.Int("power-level", -60, "iBeacon power level")
 	duration := flag.Int("duration", 0, "Advertise for duration, 0 is for ever")
