@@ -3,6 +3,7 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
 	"log"
 	"time"
@@ -89,13 +90,24 @@ func (beacon *IBeacon) Advertise(duration uint64) error {
 }
 
 func main() {
+
 	// EC9E84F8-87D8-498B-8B0C-9EF8D3AA94C7
 	// 01020304050607080910111213141516
-	ibeacon := NewIBeacon("69d9fdd724fa4987aa3f43b5f4cabcbf", "Portal", -60)
-	ibeacon.SetiBeaconVersion(1, 2)
+	uuid := flag.String("uuid", "EC9E84F8-87D8-498B-8B0C-9EF8D3AA94C7", "UUID used to advertise the beacon")
+	major := flag.Int("major", 1, "iBeacon major version")
+	minor := flag.Int("major", 1, "iBeacon minor version")
+	name := flag.String("name", "rpibeacon", "iBeacon name")
+	power := flag.Int("power-level", -60, "iBeacon power level")
+	duration := flag.Int("duration", 0, "Advertise for duration, 0 is for ever")
+
+	flag.Parse()
+
+	ibeacon := NewIBeacon(*uuid, *name, int8(*power))
+	ibeacon.SetiBeaconVersion(uint16(*major), uint16(*minor))
 	// ibeacon.AddCountService()
 	// ibeacon.AddBatteryService()
-	err := ibeacon.Advertise(0)
+	err := ibeacon.Advertise(uint64(*duration))
+
 	checkError(err)
 }
 
