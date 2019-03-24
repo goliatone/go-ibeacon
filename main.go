@@ -13,6 +13,12 @@ import (
 	"github.com/pkg/errors"
 )
 
+//VERSION Generated via ld flags
+var VERSION string
+
+//BUILD_DATE Generated via ld flags
+var BUILD_DATE string
+
 //IBeacon - Structure to hold iBeacon data
 type IBeacon struct {
 	serviceList []*ble.Service
