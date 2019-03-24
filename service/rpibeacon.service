@@ -1,0 +1,15 @@
+[Unit]
+Description=RPi iBeacon agent
+# Before=network.target
+ 
+[Service]
+Type=simple
+Restart=always
+User=pi
+WorkingDirectory=/usr/local/bin/
+ExecStart=/usr/local/bin/rpibeacon
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
