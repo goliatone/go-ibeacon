@@ -1,7 +1,11 @@
 #!/bin/bash
 
+function build {
+    go build -o rpibeacon main.go
+}
+
 function build:rpi {
-    env GOOS=linux GOARCH=arm GOARM=5 go build -o rpi-agent main.go
+    env GOOS=linux GOARCH=arm GOARM=5 go build -o rpibeacon main.go
 }
 
 function build:release {
