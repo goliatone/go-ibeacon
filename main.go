@@ -9,8 +9,9 @@ import (
 	"time"
 
 	"github.com/go-ble/ble"
-	"github.com/go-ble/ble/darwin"
+	// "github.com/go-ble/ble/darwin"
 	"github.com/go-ble/ble/examples/lib"
+	"github.com/go-ble/ble/examples/lib/dev"
 	"github.com/pkg/errors"
 )
 
@@ -34,8 +35,8 @@ type IBeacon struct {
 
 //NewIBeacon - Create new IBeacon instance
 func NewIBeacon(uuid string, name string, powerLevel int8) *IBeacon {
-	// device, err := dev.NewDevice("default")
-	device, err := darwin.NewDevice()
+	device, err := dev.NewDevice("default")
+	// device, err := darwin.NewDevice()
 	if err != nil {
 		log.Fatalf("Unable to unitialize new device: %v", err)
 	}
