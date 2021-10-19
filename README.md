@@ -3,6 +3,8 @@
 Simple ibeacon simulator written in golang.
 
 
+Might need to run with `sudo` on rpi.
+
 ## Tests
 
 For RPi portal beacon: 

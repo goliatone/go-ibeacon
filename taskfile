@@ -26,9 +26,15 @@ function build:mv {
     local host=${3:-raspberry}
 
     build:release $version
+    rpi:mv $user $host
+}
+
+function rpi:mv {
+    local user=${1:-pi}
+    local host=${2:-raspberry}
 
     ssh pi@openberry.local -C "sudo systemctl stop rpibeacon.service"
-    scp rpibeacon pi@openberry.local:/home/pi/CODE/rpibeacon/
+    scp ./bin/arm/rpibeacon $user@$host:/usr/local/bin/rpibeacon
     ssh pi@openberry.local -C "sudo systemctl start rpibeacon.service"
 }
 
